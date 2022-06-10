@@ -18,7 +18,7 @@ var getcityname = function (event) {
 };
 
 var getcitylocation = function (city) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=3395e1384a27870e4cca8c5f991a8415";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=3395e1384a27870e4cca8c5f991a8415";
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
@@ -39,12 +39,15 @@ var getcitylocation = function (city) {
         })
 };
 
-var display= function(data1, data2, data3, data4, data5,searchTerm){
-    Cname.textContent=searchTerm.toUpperCase();
-    
-    var Winfo=document.createElement('div')
+var Winfo=document.createElement('div')
     Winfo.classList.add('card-body')
-    console.log (Winfo)
+console.log (Winfo);
+
+var display= function(data1, data2, data3, data4, data5,searchTerm){
+    
+    Cname.textContent=searchTerm.toUpperCase();
+
+    Winfo.innerHTML='';
 
     //data1 value
     var condition=document.createElement('img');
@@ -72,7 +75,8 @@ var display= function(data1, data2, data3, data4, data5,searchTerm){
     Winfo.append(UVi);
 
     
-    container.append(Winfo)
+    container.append(Winfo);
+    
 }
 
 formEl.addEventListener("submit", getcityname);
